@@ -4,7 +4,7 @@ QUEUE = {}
 def add_to_queue(chat_id, title, duration, songlink, link, m.from_user.mention):
     if chat_id in QUEUE:
         chat_queue = QUEUE[chat_id]
-        chat_queue.append([chat_id, title, duration, songlink, link])
+        chat_queue.append([chat_id, title, duration, songlink, link m.from_user.mention])
         return int(len(chat_queue)-1)
     else:
         QUEUE[chat_id] = [[chat_id, title, duration, songlink, link, m.from_user.mention]]
