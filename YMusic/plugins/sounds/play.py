@@ -105,10 +105,11 @@ async def _aPlay(_, message):
             else:
                 if duration is None:
                     duration = "Playing From LiveStream"
-                add_to_queue(chat_id, title[:19], duration, songlink, link, m.from_user.mention)
+                add_to_queue(chat_id, title[:19], duration, songlink, link, user_mention)
                 finish_time = time.time()
                 total_time_taken = str(int(finish_time - start_time)) + "ثانيـةة"
-                await m.edit(f"-› تم التشـغيل بنجـاح .\n\n𓏺-› اسم المـلف : [{title[:19]}]({link}) \n-› وقـت المـلف : {duration} \n𓏺-› انتَ تدري شغـلتها خـلال : {total_time_taken} \n-› طلب الحلو : {m.from_user.mention}", disable_web_page_preview=True)
+                user_mention = m.from_user.mention()
+                await m.edit(f"-› تم التشـغيل بنجـاح .\n\n𓏺-› اسم المـلف : [{title[:19]}]({link}) \n-› وقـت المـلف : {duration} \n𓏺-› انتَ تدري شغـلتها خـلال : {total_time_taken} \n-› طلب الحلو : {user_mention}", disable_web_page_preview=True)
 
 
 @app.on_message(command(PLAY_COMMAND) & SUDOERS)
@@ -137,4 +138,5 @@ async def _raPlay(_, message):
                     duration = "Playing From LiveStream"
                 finish_time = time.time()
                 total_time_taken = str(int(finish_time - start_time)) + " ثانيـة "
-                await m.edit(f"-› تم التشـغيل بنجـاح .\n\n𓏺-› اسم المـلف : [{title[:19]}]({link})\n-› وقـت المـلف : {duration}\n-› انتَ تـدري شغلتـها خـلال : {total_time_taken} \n-› طلب الحلو : {m.from_user.mention}", disable_web_page_preview=True)
+                user_mention = m.from_user.mention()
+                await m.edit(f"-› تم التشـغيل بنجـاح .\n\n𓏺-› اسم المـلف : [{title[:19]}]({link})\n-› وقـت المـلف : {duration}\n-› انتَ تـدري شغلتـها خـلال : {total_time_taken} \n-› طلب الحلو : {user_mention}", disable_web_page_preview=True)
